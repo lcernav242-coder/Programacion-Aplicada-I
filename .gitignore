@@ -14,3 +14,6 @@
 /.gitignore
 /SEMANA-6/OrdenarCadenas/OrdenarCadenas/bin/Debug/net10.0-windows
 /SEMANA-6/OrdenarCadenas/.vs/OrdenarCadenas.slnx/DesignTimeBuild
+/SEMANA-6/OrdenarCadenas/.vs/ProjectEvaluation
+/SEMANA-6/EncriptarClave/.vs/EncriptarClave.slnx
+/SEMANA-6/EncriptarClave/EncriptarClave/obj
