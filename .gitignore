@@ -1,0 +1,7 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/SEMANA-6/CentroOdontologico/.vs
+/SEMANA-6/CentroOdontologico/CentroOdontologico/bin/Debug/net10.0-windows
+/SEMANA-6/CentroOdontologico/CentroOdontologico/obj
