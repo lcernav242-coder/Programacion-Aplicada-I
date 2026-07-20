@@ -1,0 +1,125 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\10C.png" />
+    <None Remove="Images\10D.png" />
+    <None Remove="Images\10E.png" />
+    <None Remove="Images\10T.png" />
+    <None Remove="Images\11C.png" />
+    <None Remove="Images\11D.png" />
+    <None Remove="Images\11E.png" />
+    <None Remove="Images\11T.png" />
+    <None Remove="Images\12C.png" />
+    <None Remove="Images\12D.png" />
+    <None Remove="Images\12E.png" />
+    <None Remove="Images\12T.png" />
+    <None Remove="Images\13C.png" />
+    <None Remove="Images\13D.png" />
+    <None Remove="Images\13E.png" />
+    <None Remove="Images\13T.png" />
+    <None Remove="Images\1C.png" />
+    <None Remove="Images\1D.png" />
+    <None Remove="Images\1E.png" />
+    <None Remove="Images\1T.png" />
+    <None Remove="Images\2C.png" />
+    <None Remove="Images\2D.png" />
+    <None Remove="Images\2E.png" />
+    <None Remove="Images\2T.png" />
+    <None Remove="Images\3C.png" />
+    <None Remove="Images\3D.png" />
+    <None Remove="Images\3E.png" />
+    <None Remove="Images\3T.png" />
+    <None Remove="Images\4C.png" />
+    <None Remove="Images\4D.png" />
+    <None Remove="Images\4E.png" />
+    <None Remove="Images\4T.png" />
+    <None Remove="Images\5C.png" />
+    <None Remove="Images\5D.png" />
+    <None Remove="Images\5E.png" />
+    <None Remove="Images\5T.png" />
+    <None Remove="Images\6C.png" />
+    <None Remove="Images\6D.png" />
+    <None Remove="Images\6E.png" />
+    <None Remove="Images\6T.png" />
+    <None Remove="Images\7C.png" />
+    <None Remove="Images\7D.png" />
+    <None Remove="Images\7E.png" />
+    <None Remove="Images\7T.png" />
+    <None Remove="Images\8C.png" />
+    <None Remove="Images\8D.png" />
+    <None Remove="Images\8E.png" />
+    <None Remove="Images\8T.png" />
+    <None Remove="Images\9C.png" />
+    <None Remove="Images\9D.png" />
+    <None Remove="Images\9E.png" />
+    <None Remove="Images\9T.png" />
+    <None Remove="Images\black_joker.png" />
+    <None Remove="Images\red_joker.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\10C.png" />
+    <Resource Include="Images\10D.png" />
+    <Resource Include="Images\10E.png" />
+    <Resource Include="Images\10T.png" />
+    <Resource Include="Images\11C.png" />
+    <Resource Include="Images\11D.png" />
+    <Resource Include="Images\11E.png" />
+    <Resource Include="Images\11T.png" />
+    <Resource Include="Images\12C.png" />
+    <Resource Include="Images\12D.png" />
+    <Resource Include="Images\12E.png" />
+    <Resource Include="Images\12T.png" />
+    <Resource Include="Images\13C.png" />
+    <Resource Include="Images\13D.png" />
+    <Resource Include="Images\13E.png" />
+    <Resource Include="Images\13T.png" />
+    <Resource Include="Images\1C.png" />
+    <Resource Include="Images\1D.png" />
+    <Resource Include="Images\1E.png" />
+    <Resource Include="Images\1T.png" />
+    <Resource Include="Images\2C.png" />
+    <Resource Include="Images\2D.png" />
+    <Resource Include="Images\2E.png" />
+    <Resource Include="Images\2T.png" />
+    <Resource Include="Images\3C.png" />
+    <Resource Include="Images\3D.png" />
+    <Resource Include="Images\3E.png" />
+    <Resource Include="Images\3T.png" />
+    <Resource Include="Images\4C.png" />
+    <Resource Include="Images\4D.png" />
+    <Resource Include="Images\4E.png" />
+    <Resource Include="Images\4T.png" />
+    <Resource Include="Images\5C.png" />
+    <Resource Include="Images\5D.png" />
+    <Resource Include="Images\5E.png" />
+    <Resource Include="Images\5T.png" />
+    <Resource Include="Images\6C.png" />
+    <Resource Include="Images\6D.png" />
+    <Resource Include="Images\6E.png" />
+    <Resource Include="Images\6T.png" />
+    <Resource Include="Images\7C.png" />
+    <Resource Include="Images\7D.png" />
+    <Resource Include="Images\7E.png" />
+    <Resource Include="Images\7T.png" />
+    <Resource Include="Images\8C.png" />
+    <Resource Include="Images\8D.png" />
+    <Resource Include="Images\8E.png" />
+    <Resource Include="Images\8T.png" />
+    <Resource Include="Images\9C.png" />
+    <Resource Include="Images\9D.png" />
+    <Resource Include="Images\9E.png" />
+    <Resource Include="Images\9T.png" />
+    <Resource Include="Images\black_joker.png" />
+    <Resource Include="Images\red_joker.png" />
+  </ItemGroup>
+
+</Project>
