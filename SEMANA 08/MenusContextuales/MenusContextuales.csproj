@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Iconos\icons8-copiar-30.png" />
+    <None Remove="Iconos\icons8-cortar-50.png" />
+    <None Remove="Iconos\icons8-pegar-32.png" />
+    <None Remove="icons8-copiar-30.png" />
+    <None Remove="icons8-cortar-50.png" />
+    <None Remove="icons8-pegar-32.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Iconos\icons8-copiar-30.png" />
+    <Resource Include="Iconos\icons8-cortar-50.png" />
+    <Resource Include="Iconos\icons8-pegar-32.png" />
+    <Resource Include="icons8-copiar-30.png" />
+    <Resource Include="icons8-cortar-50.png" />
+    <Resource Include="icons8-pegar-32.png" />
+  </ItemGroup>
+
+</Project>
