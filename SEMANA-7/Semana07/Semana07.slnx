@@ -2,6 +2,7 @@
   <Project Path="AdivinaEdad/AdivinaEdad.csproj" />
   <Project Path="Imagenes/Imagenes.csproj" />
   <Project Path="Juego21/Juego21.csproj" Id="52ad63f1-feef-4453-b44d-e5f51a3b6b5b" />
+  <Project Path="JuegoTinka/JuegoTinka.csproj" Id="eea1f692-38a9-4c12-98cf-67d8e7daf9ef" />
   <Project Path="Tragamonedas/Tragamonedas.csproj" />
   <Project Path="TragamonedasV2/TragamonedasV2.csproj" Id="29ee6db6-e3ae-43cc-84ea-64cdbd8a115f" />
 </Solution>
