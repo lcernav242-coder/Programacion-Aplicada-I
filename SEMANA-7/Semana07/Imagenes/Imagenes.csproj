@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Google.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Google.png" />
+  </ItemGroup>
+
 </Project>
