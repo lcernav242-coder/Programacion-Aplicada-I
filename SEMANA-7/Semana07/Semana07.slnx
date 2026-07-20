@@ -2,4 +2,5 @@
   <Project Path="AdivinaEdad/AdivinaEdad.csproj" />
   <Project Path="Imagenes/Imagenes.csproj" />
   <Project Path="Tragamonedas/Tragamonedas.csproj" />
+  <Project Path="TragamonedasV2/TragamonedasV2.csproj" Id="29ee6db6-e3ae-43cc-84ea-64cdbd8a115f" />
 </Solution>
