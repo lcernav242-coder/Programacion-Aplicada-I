@@ -1,0 +1,93 @@
+﻿<Window x:Class="Temperaturas.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Temperaturas"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="380"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="lbMeses" Grid.Column="2" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFB7DEB2"/>
+        <StackPanel Grid.Column="1" Margin="10,0,10,0">
+            <Button x:Name="btnCalcular" Content="Mostrar Calculos" Click="btnCalcular_Click"/>
+            <TextBlock TextWrapping="Wrap" Text="Promedio" Background="#FFB7DEB2" Margin="0,10,0,0" FontWeight="Bold" TextAlignment="Center"/>
+            <TextBlock x:Name="tbPromedio" TextWrapping="Wrap" Background="#FFB7DEB2" Margin="0,5,0,0" FontWeight="Bold" TextAlignment="Center"/>
+            <TextBlock TextWrapping="Wrap" Text="N° Temp. mayores al prom.
+" Background="#FFB7DEB2" Margin="0,15,0,0" FontWeight="Bold" TextAlignment="Center"/>
+            <TextBlock x:Name="tbCantidad" TextWrapping="Wrap" Background="#FFB7DEB2" Margin="0,5,0,0" FontWeight="Bold" TextAlignment="Center"/>
+            <Button x:Name="btnGuardar" Content="Guardar Registro" Margin="0,20,0,0"/>
+        </StackPanel>
+        <Border BorderBrush="#FF6F6D6D" BorderThickness="1" Background="#FFF5F5C5">
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Text="Temperaturas promedio mensuales" FontWeight="Bold" FontSize="15" TextAlignment="Center"/>
+                <UniformGrid Rows="6" Columns="2" Margin="10,5,10,5">
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Enero" Width="60"/>
+                        <TextBox x:Name="txtEnero" Width="80" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Julio" Width="60"/>
+                        <TextBox x:Name="txtJulio" Width="80" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Febrero" Width="60"/>
+                        <TextBox x:Name="txtFebrero" Width="80" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Agosto" Width="60"/>
+                        <TextBox x:Name="txtAgosto" Width="80" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Marzo" Width="60"/>
+                        <TextBox x:Name="txtMarzo" Width="80" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Setiembre" Width="60"/>
+                        <TextBox x:Name="txtSetiembre" Width="80" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Abril" Width="60"/>
+                        <TextBox x:Name="txtAbril" Width="80" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Octubre" Width="60"/>
+                        <TextBox x:Name="txtOctubre" Width="80" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Mayo" Width="60"/>
+                        <TextBox x:Name="txtMayo" Width="80" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Noviembre" Width="60"/>
+                        <TextBox x:Name="txtNoviembre" Width="80" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Junio" Width="60"/>
+                        <TextBox x:Name="txtJunio" Width="80" />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Diciembre" Width="60"/>
+                        <TextBox x:Name="txtDiciembre" Width="80" />
+                    </StackPanel>
+                </UniformGrid>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Window>
