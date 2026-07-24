@@ -4,23 +4,55 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MenusContextuales"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MenuPrincipal" Height="450" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="CommandBinding_Nuevo"></CommandBinding>
+        <CommandBinding Command="Open" CanExecute="CommandBinding_Abrir"/>
+    </Window.CommandBindings>
     <Grid>
+
+
         <DockPanel LastChildFill="False">
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="Archivo" Click="MenuItem_Click">
+                <MenuItem Header="_Archivo">
                     <MenuItem Header="Nuevo" />
-                    <MenuItem Header="Abrir" />
-                    <MenuItem Header="Guardar" />
-                    <Separator />
-                    <MenuItem Header="_Exit" />
+                    <MenuItem Header="A_brir" />
+                    <MenuItem Header="Guardar"/>
+                    <Separator/>
+                    <MenuItem Header="_Salir" Click="MenuItem_Click"/>
                 </MenuItem>
-                <MenuItem Header="Herramientas " Click="MenuItem_Click_1">
-                    <MenuItem Header="Administrar usuarios"/>
-                    <MenuItem Header="Mostrar Grupos" IsChecked="True"/>
+                <MenuItem Header="_Herramientas">
+                    <MenuItem Header="Administrar Usuarios">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="UserAdd"></materialDesign:PackIcon>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Mostrar Grupos" IsCheckable="True" IsChecked="True"/>
                 </MenuItem>
+
             </Menu>
+            <ToolBarTray DockPanel.Dock="Top">
+                <ToolBar>
+                    <Button>
+                        <StackPanel Orientation="Horizontal" >
+                            <Image Width="18" Source="/Iconos/icons8-pegar-32.png"></Image>
+                            <TextBlock Text="Nuevo"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Content="Abrir"/>
+                    <Button Content="Guardar"/>
+                </ToolBar>
+                <ToolBar>
+                    <Button Content="Cortar" Command="Cut"/>
+                    <Button Content="Copiar" Command="Copy"/>
+                    <Button Content="Pegar" Command="Paste"/>
+                </ToolBar>
+
+            </ToolBarTray>
+            <TextBox TextWrapping="Wrap" Text="TextBox" Height="381" Width="393"/>
         </DockPanel>
+
     </Grid>
 </Window>
