@@ -1,0 +1,32 @@
+﻿<Window x:Class="Connect4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="700" Width="750" WindowStartupLocation="CenterScreen">
+
+    <DockPanel Background="#F0F4F8">
+        <Menu DockPanel.Dock="Top" Background="#FFFFFF" BorderBrush="#DDDDDD" BorderThickness="0,0,0,1">
+            <MenuItem Header="_Juego">
+                <MenuItem Header="_Nueva Partida" Click="MenuNuevo_Click"/>
+                <Separator/>
+                <MenuItem Header="_Salir" Click="MenuSalir_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <ToolBarTray DockPanel.Dock="Top" Background="#FFFFFF">
+            <ToolBar>
+                <Button Content="🔄 Reiniciar Juego" Click="MenuNuevo_Click" FontWeight="Bold" Margin="5"/>
+            </ToolBar>
+        </ToolBarTray>
+
+        <Border DockPanel.Dock="Top" Background="#333333" Padding="10">
+            <TextBlock x:Name="lblEstado" Text="Turno: Jugador 1 (ROJO)" Foreground="#FF4444" 
+                       FontSize="24" FontWeight="Black" HorizontalAlignment="Center"/>
+        </Border>
+
+        <Viewbox Margin="20">
+            <Border Background="#1A53D8" CornerRadius="15" Padding="15" BorderBrush="#0D3594" BorderThickness="4">
+                <UniformGrid x:Name="gridTablero" Rows="6" Columns="7" Width="600" Height="500"/>
+            </Border>
+        </Viewbox>
+    </DockPanel>
+</Window>
