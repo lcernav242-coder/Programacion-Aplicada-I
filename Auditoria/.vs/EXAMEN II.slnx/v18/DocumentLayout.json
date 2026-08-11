@@ -1,0 +1,151 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|c:\\users\\lfcer\\dev\\proyectos\\vs community\\pa-i\\auditoria\\auditoria\\transportista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|solutionrelative:auditoria\\transportista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|c:\\users\\lfcer\\dev\\proyectos\\vs community\\pa-i\\auditoria\\auditoria\\pedidoenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|solutionrelative:auditoria\\pedidoenvio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|c:\\users\\lfcer\\dev\\proyectos\\vs community\\pa-i\\auditoria\\auditoria\\auditoriadao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|solutionrelative:auditoria\\auditoriadao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|c:\\users\\lfcer\\dev\\proyectos\\vs community\\pa-i\\auditoria\\auditoria\\moduloauditoria.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|solutionrelative:auditoria\\moduloauditoria.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|c:\\users\\lfcer\\dev\\proyectos\\vs community\\pa-i\\auditoria\\auditoria\\moduloauditoria.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|solutionrelative:auditoria\\moduloauditoria.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|c:\\users\\lfcer\\dev\\proyectos\\vs community\\pa-i\\auditoria\\auditoria\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|solutionrelative:auditoria\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|c:\\users\\lfcer\\dev\\proyectos\\vs community\\pa-i\\auditoria\\auditoria\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|solutionrelative:auditoria\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|c:\\users\\lfcer\\dev\\proyectos\\vs community\\pa-i\\auditoria\\auditoria\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C363673-A6CF-D46C-AB77-2EEECF799034}|Auditoria\\Auditoria.csproj|solutionrelative:auditoria\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\App.xaml",
+              "RelativeDocumentMoniker": "Auditoria\\App.xaml",
+              "ToolTip": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\App.xaml",
+              "RelativeToolTip": "Auditoria\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-10T13:07:56.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ModuloAuditoria.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\ModuloAuditoria.xaml.cs",
+              "RelativeDocumentMoniker": "Auditoria\\ModuloAuditoria.xaml.cs",
+              "ToolTip": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\ModuloAuditoria.xaml.cs",
+              "RelativeToolTip": "Auditoria\\ModuloAuditoria.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T13:05:48.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ModuloAuditoria.xaml",
+              "DocumentMoniker": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\ModuloAuditoria.xaml",
+              "RelativeDocumentMoniker": "Auditoria\\ModuloAuditoria.xaml",
+              "ToolTip": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\ModuloAuditoria.xaml",
+              "RelativeToolTip": "Auditoria\\ModuloAuditoria.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-10T13:00:20.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuditoriaDAO.cs",
+              "DocumentMoniker": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\AuditoriaDAO.cs",
+              "RelativeDocumentMoniker": "Auditoria\\AuditoriaDAO.cs",
+              "ToolTip": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\AuditoriaDAO.cs",
+              "RelativeToolTip": "Auditoria\\AuditoriaDAO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T12:59:41.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PedidoEnvio.cs",
+              "DocumentMoniker": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\PedidoEnvio.cs",
+              "RelativeDocumentMoniker": "Auditoria\\PedidoEnvio.cs",
+              "ToolTip": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\PedidoEnvio.cs",
+              "RelativeToolTip": "Auditoria\\PedidoEnvio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T12:58:38.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Transportista.cs",
+              "DocumentMoniker": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\Transportista.cs",
+              "RelativeDocumentMoniker": "Auditoria\\Transportista.cs",
+              "ToolTip": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\Transportista.cs",
+              "RelativeToolTip": "Auditoria\\Transportista.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T12:58:08.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Auditoria\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\MainWindow.xaml",
+              "RelativeToolTip": "Auditoria\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-08-10T12:56:15.143Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Auditoria\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\lfcer\\DEV\\PROYECTOS\\VS Community\\PA-I\\Auditoria\\Auditoria\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Auditoria\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T12:56:07.668Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
