@@ -12,6 +12,9 @@ namespace EjemploMVVM.ViewModels
     {
         public ObservableCollection<Producto> productos { get; set; } = new ObservableCollection<Producto>();
 
+        public ObservableCollection<string> categorias { get; set; } = new ObservableCollection<string>();
+        public string categoriaSeleccionada { get; set; } = string.Empty;
+
         public RelayCommand ComandoCargarProductos { get; set; }
 
         public string textoBuscar { get; set; } = string.Empty;
@@ -23,12 +26,30 @@ namespace EjemploMVVM.ViewModels
             _repository = new ProductoRepositoryImpl();
             ComandoCargarProductos = new RelayCommand(BuscarProductos);
 
+            CargarCategorias();
             CargarProductos();
+        }
+
+        private void CargarCategorias()
+        {
+            categorias.Clear();
+            categorias.Add("Todas"); 
+            categorias.Add("Beverages");
+            categorias.Add("Condiments");
+            categorias.Add("Confections");
+            categorias.Add("Dairy Products");
+            categorias.Add("Grains/Cereals");
+            categorias.Add("Meat/Poultry");
+            categorias.Add("Produce");
+            categorias.Add("Seafood");
+
+            categoriaSeleccionada = "Todas";
         }
 
         private void BuscarProductos()
         {
-            List<Producto> lista = _repository.BuscarPorNombre(textoBuscar);
+            List<Producto> lista = _repository.BuscarPorNombreYCategoria(textoBuscar, categoriaSeleccionada);
+
             productos.Clear();
             foreach (Producto producto in lista)
             {
@@ -46,9 +67,5 @@ namespace EjemploMVVM.ViewModels
             }
             int cantidad = productos.Count;
         }
-
-
-
-
     }
 }

@@ -9,5 +9,7 @@ namespace EjemploMVVM.Repositories
     {
         public List<Producto> ListarTodos();
         public List<Producto> BuscarPorNombre(string nombre);
+
+        public List<Producto> BuscarPorNombreYCategoria(string nombre, string categoria);
     }
 }

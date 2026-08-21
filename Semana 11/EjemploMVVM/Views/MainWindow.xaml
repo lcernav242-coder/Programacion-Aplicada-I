@@ -11,9 +11,17 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="347*"/>
         </Grid.RowDefinitions>
+
         <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
             <TextBlock Text="Buscar:" Margin="0,0,10,0" VerticalAlignment="Center"/>
-            <TextBox Width="250" Margin="0,0,10,0" Text="{Binding textoBuscar}"/>
+            <TextBox Width="200" Margin="0,0,10,0" Text="{Binding textoBuscar}"/>
+
+            <!-- ComboBox de Categorías integrado -->
+            <TextBlock Text="Categoría:" Margin="10,0,10,0" VerticalAlignment="Center"/>
+            <ComboBox Width="150" Margin="0,0,20,0" 
+                      ItemsSource="{Binding categorias}" 
+                      SelectedItem="{Binding categoriaSeleccionada}"/>
+
             <Button Content="Buscar Productos" Padding="5" Command="{Binding ComandoCargarProductos, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 

@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EjemploMVVM.Repositories
 {
     public class ProductoRepositoryImpl : IProductoRepository
     {
         string cn;
+
         public ProductoRepositoryImpl()
         {
             cn = ConfigurationManager.ConnectionStrings["EjemploMVVM.Properties.Settings.NorthwindDB"].ConnectionString;
@@ -26,7 +26,7 @@ namespace EjemploMVVM.Repositories
                 conex.Open();
                 string? nombreParametro = string.IsNullOrEmpty(nombre) ? null : "%" + nombre + "%";
                 SqlCommand sqlCommand = new SqlCommand(query, conex);
-                sqlCommand.Parameters.Add("@Nombre", SqlDbType.NVarChar, 40).Value = nombreParametro;
+                sqlCommand.Parameters.Add("@Nombre", SqlDbType.NVarChar, 40).Value = (object?)nombreParametro ?? DBNull.Value;
                 SqlDataReader reader = sqlCommand.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
                 while (reader.Read())
                 {
@@ -40,7 +40,6 @@ namespace EjemploMVVM.Repositories
                     listaProductos.Add(producto);
                 }
                 return listaProductos;
-
             }
         }
 
@@ -52,6 +51,44 @@ namespace EjemploMVVM.Repositories
             {
                 conex.Open();
                 SqlCommand sqlCommand = new SqlCommand(query, conex);
+                SqlDataReader reader = sqlCommand.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                while (reader.Read())
+                {
+                    Producto producto = new Producto
+                    {
+                        Id = reader.GetInt32(0),
+                        nombre = reader.GetString(1),
+                        precio = reader.GetDecimal(2),
+                        discontinuado = reader.GetBoolean(3)
+                    };
+                    listaProductos.Add(producto);
+                }
+                return listaProductos;
+            }
+        }
+
+        public List<Producto> BuscarPorNombreYCategoria(string nombre, string categoria)
+        {
+            string query = @"
+                SELECT p.ProductID, p.ProductName, p.UnitPrice, p.Discontinued 
+                FROM Products p
+                LEFT JOIN Categories c ON p.CategoryID = c.CategoryID
+                WHERE (@Nombre IS NULL OR p.ProductName LIKE @Nombre)
+                  AND (@Categoria = 'Todas' OR @Categoria IS NULL OR c.CategoryName = @Categoria)";
+
+            List<Producto> listaProductos = new List<Producto>();
+            using (SqlConnection conex = new SqlConnection(cn))
+            {
+                conex.Open();
+
+                string? nombreParametro = string.IsNullOrEmpty(nombre) ? null : "%" + nombre + "%";
+                string categoriaParametro = string.IsNullOrEmpty(categoria) ? "Todas" : categoria;
+
+                SqlCommand sqlCommand = new SqlCommand(query, conex);
+
+                sqlCommand.Parameters.Add("@Nombre", SqlDbType.NVarChar, 40).Value = (object?)nombreParametro ?? DBNull.Value;
+                sqlCommand.Parameters.Add("@Categoria", SqlDbType.NVarChar, 15).Value = categoriaParametro;
+
                 SqlDataReader reader = sqlCommand.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
                 while (reader.Read())
                 {
