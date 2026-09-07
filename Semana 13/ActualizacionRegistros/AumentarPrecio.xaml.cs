@@ -26,7 +26,7 @@ namespace ActualizacionRegistros
             InitializeComponent();
         }
 
-        
+
 
         private void dgProductos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -90,45 +90,56 @@ namespace ActualizacionRegistros
 
         private void btnActualizar_Click(object sender, RoutedEventArgs e)
         {
-            
-                string id = txtId.Text;
 
-                using (SqlConnection conn = new SqlConnection(cn))
+            string id = txtId.Text;
+
+            using (SqlConnection conn = new SqlConnection(cn))
+            {
+                conn.Open();
+                SqlCommand cmd = conn.CreateCommand();
+
+                if (string.IsNullOrEmpty(id))
                 {
-                    conn.Open();
-                    SqlCommand cmd = conn.CreateCommand();
+                    return;
+                }
+                else
+                {
+                    conn.InfoMessage += Conn_InfoMessage;
 
-                    if (string.IsNullOrEmpty(id))
+                    cmd.CommandText = "SP_ActualizarPrecio";
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@ProductID", System.Data.SqlDbType.Int).Value = id;
+                    cmd.Parameters.Add("@Procentaje", System.Data.SqlDbType.Int).Value = string.IsNullOrEmpty(txtProcentaje.Text) ? (Object)DBNull.Value : txtProcentaje.Text;
+                    cmd.Parameters.Add("@RowVersion", System.Data.SqlDbType.Timestamp).Value = producto.RowVersion;
+                    SqlParameter pNuevoPrecio = new SqlParameter("@NuevoPrecio", System.Data.DbType.Decimal)
                     {
-                        return;
-                    }
-                    else
+                        Direction = System.Data.ParameterDirection.Output,
+                        Precision = 18,
+                        Scale = 2,
+                        DbType = System.Data.DbType.Decimal,
+                    };
+
+                    cmd.Parameters.Add(pNuevoPrecio);
+
+                    int filaAfectadas = cmd.ExecuteNonQuery();
+
+                    decimal nuevoPrecio = (decimal)pNuevoPrecio.Value;
+
+                    if (filaAfectadas > 0)
                     {
-                        cmd.CommandText = "SP_ActualizarPrecio";
-                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-                        cmd.Parameters.Add("@ProductID", System.Data.SqlDbType.Int).Value = id;
-                        cmd.Parameters.Add("@Procentaje", System.Data.SqlDbType.Int).Value = string.IsNullOrEmpty(txtProcentaje.Text) ? (Object)DBNull.Value : txtProcentaje.Text;
-                        cmd.Parameters.Add("@RowVersion", System.Data.SqlDbType.Timestamp).Value = producto.RowVersion;
-                        SqlParameter pNuevoPrecio = new SqlParameter("@NuevoPrecio", System.Data.DbType.Decimal)
-                        {
-                            Direction = System.Data.ParameterDirection.Output,
-                            Precision = 18,
-                            Scale = 2,
-                            DbType = System.Data.DbType.Decimal,
-                        };
-
-                        cmd.Parameters.Add(pNuevoPrecio);
-
-                        cmd.ExecuteNonQuery();
-
-                        decimal nuevoPrecio = (decimal)pNuevoPrecio.Value;
-
                         MessageBox.Show($"Producto actualizado nuevo precio es {nuevoPrecio}");
                         this.CargarProductos();
                     }
+                    else
+                    {
+                        MessageBox.Show("El registro fue modificado por otro usuario");
+                    }
+
 
                 }
+
+            }
             try
             {
             }
@@ -140,6 +151,11 @@ namespace ActualizacionRegistros
             {
                 MessageBox.Show($"Error general {ex.Message}");
             }
+        }
+
+        private void Conn_InfoMessage(object sender, SqlInfoMessageEventArgs e)
+        {
+            MessageBox.Show($"{e.Message}");
         }
     }
 }
