@@ -1,4 +1,4 @@
-﻿using System.Configuration;
+﻿using Microsoft.Data.SqlClient;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,8 +9,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Microsoft.Data.SqlClient;
-
+using System.Configuration;
+using System.Threading.Tasks;
 
 namespace EliminacionRegistros
 {
@@ -19,80 +19,11 @@ namespace EliminacionRegistros
     /// </summary>
     public partial class MainWindow : Window
     {
-        string cn = ConfigurationManager.ConnectionStrings["EliminacionRegistros.Properties.Settings.Northwind"].ConnectionString;
-
+        string cn = ConfigurationManager.ConnectionStrings["EliminacionRegistros.Properties.Settings.Nortwind"].ConnectionString;
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void btnNuevo_Click(object sender, RoutedEventArgs e)
-        {
-            this.Nuevo();
-        }
-
-        private void Nuevo()
-        {
-            txtId.Clear();
-            txtNombre.Clear();
-            txtDescripcion.Clear();
-            txtNombre.Focus();
-        }
-
-        private void btnAgregar_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string id = txtId.Text;
-
-                using (SqlConnection conn = new SqlConnection(cn))
-                {
-                    conn.Open();
-                    SqlCommand cmd = conn.CreateCommand();
-
-                    if (string.IsNullOrEmpty(id))
-                    {
-                        cmd.CommandText = "INSERT INTO Categories(CategoryName,Description) VALUES(@Nombre,@Descripcion); select SCOPE_IDENTITY();";
-                        cmd.CommandType = System.Data.CommandType.Text;
-                        cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.NVarChar, 15).Value = txtNombre.Text;
-                        cmd.Parameters.Add("@Descripcion", System.Data.SqlDbType.NVarChar, -1).Value = string.IsNullOrEmpty(txtDescripcion.Text) ? (Object)DBNull.Value : txtDescripcion.Text;
-                        int idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
-
-                        MessageBox.Show($"Categoria agregada con Id {idGenerado}");
-                        this.Nuevo();
-                        this.CargarListaCategorias();
-                    }
-                    else
-                    {
-                        cmd.CommandText = @"UPDATE categories SET CategoryName=@Nombre,
-                                            Description=@Descripcion 
-                                            WHERE CategoryID=@Id";
-                        cmd.CommandType = System.Data.CommandType.Text;
-                        cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.NVarChar, 15).Value = txtNombre.Text;
-                        cmd.Parameters.Add("@Descripcion", System.Data.SqlDbType.NVarChar, -1).Value = string.IsNullOrEmpty(txtDescripcion.Text) ? (Object)DBNull.Value : txtDescripcion.Text;
-                        cmd.Parameters.Add("@Id", System.Data.SqlDbType.Int).Value = id;
-
-                        cmd.ExecuteNonQuery();
-
-                        MessageBox.Show($"Categoria actualizada");
-                        this.CargarListaCategorias();
-                    }
-
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show($"Error en sql {ex.Number}, {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error general {ex.Message}");
-            }
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            this.CargarListaCategorias();
         }
 
         private void CargarListaCategorias()
@@ -113,7 +44,9 @@ namespace EliminacionRegistros
                         {
                             Id = reader.GetInt32(0),
                             Nombre = reader.GetString(1),
-                            Descripcion = reader.IsDBNull(2) ? null : reader.GetString(2)
+
+                            //aca siempre ver el error 
+                            Descripcion = reader.IsDBNull(2) ? string.Empty : reader.GetString(2)
                         });
                     }
                     dgCategorias.ItemsSource = lista;
@@ -129,30 +62,106 @@ namespace EliminacionRegistros
             }
         }
 
-        private void dgCategorias_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void dgCategorias_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            btnEliminar.IsEnabled = false;
+
             if (dgCategorias.SelectedItem != null)
             {
-                Categoria categoria = (Categoria)dgCategorias.SelectedItem;
+                Categoria categoria =
+                    (Categoria)dgCategorias.SelectedItem;
 
-                txtId.Text = categoria.Id.ToString();
-                txtNombre.Text = categoria.Nombre.ToString();
-                txtDescripcion.Text = categoria?.Descripcion;
+                txtIdCategoria.Text = categoria.Id.ToString();
+
+                txtNombre.Text = categoria.Nombre;
+
+                txtDescripcion.Text = categoria.Descripcion ?? string.Empty;
+
+                btnEliminar.IsEnabled = await CanDeleteCategoryAsync(categoria.Id);
             }
+        }
+
+        private void btnNuevo_Click(object sender, RoutedEventArgs e)
+        {
+            this.Nuevo();
+
+        }
+        private void Nuevo()
+
+        {
+            txtIdCategoria.Clear();
+            txtNombre.Clear();
+            txtDescripcion.Clear();
+            btnEliminar.IsEnabled = false;
+            txtNombre.Focus();
+        }
+
+        private void btnAgregar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string id = txtIdCategoria.Text;
+
+                using (SqlConnection conn = new SqlConnection(cn))
+                {
+                    conn.Open();
+                    SqlCommand cmd = conn.CreateCommand();
+
+                    if (string.IsNullOrEmpty(id))
+                    {
+                        cmd.CommandText = "INSERT INTO Categories(CategoryName,Description) VALUES(@Nombre,@Descripcion); select SCOPE_IDENTITY();";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.NVarChar, 15).Value = txtNombre.Text;
+                        cmd.Parameters.Add("@Descripcion", System.Data.SqlDbType.NVarChar, -1).Value = txtDescripcion.Text;
+                        int idGenerado = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        MessageBox.Show($"Categoria agregada con Id {idGenerado}");
+                        this.Nuevo();
+                        this.CargarListaCategorias();
+                    }
+                    else
+                    {
+                        cmd.CommandText = @"UPDATE categories SET CategoryName=@Nombre,
+                     Description=@Descripcion
+                     WHERE CategoryID=@Id";
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        cmd.Parameters.Add("@Nombre", System.Data.SqlDbType.NVarChar, 15).Value = txtNombre.Text;
+                        cmd.Parameters.Add("@Descripcion", System.Data.SqlDbType.NVarChar, -1).Value = string.IsNullOrEmpty(txtDescripcion.Text) ? (object)DBNull.Value : txtDescripcion.Text;
+                        cmd.Parameters.Add("@Id", System.Data.SqlDbType.Int).Value = id;
+
+                        cmd.ExecuteNonQuery();
+
+                        MessageBox.Show($"Categoria actualizada");
+                        this.CargarListaCategorias();
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"Error en sql {ex.Number}, {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error general {ex.Message}");
+            }
+
+
+
+
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult respuesta = MessageBox.Show("¿esta seguro de eliminar el registro seleccionado?", "Eliminar", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult respuesta = MessageBox.Show(" ¿esta seguro de eliminar la categoria? ", "Eliminar", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            if (MessageBoxResult.Yes == respuesta)
+            if (respuesta == MessageBoxResult.Yes)
             {
-                this.EliminarRegistro();
+                this.EiminarRegistro();
             }
 
         }
 
-        private void EliminarRegistro()
+        private void EiminarRegistro()
         {
             try
             {
@@ -162,7 +171,7 @@ namespace EliminacionRegistros
                     con.Open();
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        cmd.Parameters.Add("@IdCategoria", System.Data.SqlDbType.Int).Value = txtId.Text;
+                        cmd.Parameters.Add("@IdCategoria", System.Data.SqlDbType.Int).Value = txtIdCategoria.Text;
 
                         int filaAfectadas = cmd.ExecuteNonQuery();
 
@@ -186,5 +195,40 @@ namespace EliminacionRegistros
                 }
             }
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.CargarListaCategorias();
+        }
+
+        private async Task<bool> CanDeleteCategoryAsync(int categoryId)
+        {
+            string sql = @"
+        SELECT COUNT(1)
+        FROM Products
+        WHERE CategoryID = @ID";
+
+            using (SqlConnection connection =
+                   new SqlConnection(cn))
+            {
+                await connection.OpenAsync();
+
+                using (SqlCommand cmd =
+                       new SqlCommand(sql, connection))
+                {
+                    cmd.Parameters.Add(
+                        "@ID",
+                        System.Data.SqlDbType.Int
+                    ).Value = categoryId;
+
+                    int count = Convert.ToInt32(
+                        await cmd.ExecuteScalarAsync()
+                    );
+
+                    return count == 0;
+                }
+            }
+        }
+
     }
 }
