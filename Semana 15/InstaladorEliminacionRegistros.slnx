@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../Semana 14/EliminacionRegistros/EliminacionRegistros.csproj" />
+  <Project Path="InstaladorEliminacionRegistros/InstaladorEliminacionRegistros.vdproj" Type="Installer">
+    <Build />
+  </Project>
+</Solution>
