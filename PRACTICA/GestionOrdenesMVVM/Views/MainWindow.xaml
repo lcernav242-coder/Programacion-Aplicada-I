@@ -1,0 +1,132 @@
+﻿<Window x:Class="GestionOrdenesMVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gestión de Órdenes de Venta - Northwind" Height="680" Width="1050"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Background="#F8F9FA">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Título Verde -->
+            <RowDefinition Height="Auto"/>
+            <!-- Formulario -->
+            <RowDefinition Height="Auto"/>
+            <!-- Botones -->
+            <RowDefinition Height="*"/>
+            <!-- Tabla -->
+        </Grid.RowDefinitions>
+
+        <!-- TÍTULO SUPERIOR -->
+        <Border Grid.Row="0" Background="#388E3C" Padding="15">
+            <TextBlock Text="Gestión de Órdenes de Venta - Northwind (MVVM)" 
+                       Foreground="White" FontSize="20" FontWeight="Bold"/>
+        </Border>
+
+        <!-- SECCIÓN DE FORMULARIO -->
+        <GroupBox Grid.Row="1" Header="Datos de la Orden" Margin="15,10,15,10" Padding="10" 
+                  BorderBrush="#B0BEC5" BorderThickness="1" FontWeight="Bold">
+
+            <Grid TextElement.FontWeight="Normal">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Fila 1: ID, Cliente, Empleado -->
+                <StackPanel Grid.Row="0" Grid.Column="0" Margin="5">
+                    <TextBlock Text="Order ID:"/>
+                    <TextBox Text="{Binding OrderId, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" Background="#E0E0E0" Margin="0,5,10,0" Height="22"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="1" Margin="5">
+                    <TextBlock Text="Cliente:"/>
+                    <TextBox Text="{Binding Cliente, UpdateSourceTrigger=PropertyChanged}" Margin="0,5,10,0" Height="22"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="2" Margin="5">
+                    <TextBlock Text="Empleado:"/>
+                    <ComboBox ItemsSource="{Binding ListaEmpleados}" SelectedItem="{Binding Empleado, UpdateSourceTrigger=PropertyChanged}" Margin="0,5,10,0" Height="22"/>
+                </StackPanel>
+
+                <!-- Fila 2: Transportistas -->
+                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="5,15,5,5">
+                    <TextBlock Text="Transportista (ShipVia):"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <RadioButton Content="Speedy Express" IsChecked="{Binding IsSpeedy}" Margin="0,0,20,0"/>
+                        <RadioButton Content="United Package" IsChecked="{Binding IsUnited}" Margin="0,0,20,0"/>
+                        <RadioButton Content="Federal Shipping" IsChecked="{Binding IsFederal}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Fila 3: Nombre Destino, Ciudad Destino, Monto -->
+                <StackPanel Grid.Row="2" Grid.Column="0" Margin="5,15,5,5">
+                    <TextBlock Text="Nombre de Destino (ShipName):"/>
+                    <TextBox Text="{Binding Destino, UpdateSourceTrigger=PropertyChanged}" Margin="0,5,10,0" Height="22"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="1" Margin="5,15,5,5">
+                    <TextBlock Text="Ciudad de Destino:"/>
+                    <ComboBox ItemsSource="{Binding ListaCiudades}" SelectedItem="{Binding Ciudad, UpdateSourceTrigger=PropertyChanged}" Margin="0,5,10,0" Height="22"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="2" Margin="5,15,5,5">
+                    <TextBlock Text="Monto de Envío (Freight):"/>
+                    <TextBox Text="{Binding Monto, UpdateSourceTrigger=PropertyChanged}" Margin="0,5,10,0" Height="22"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <!-- SECCIÓN DE BOTONES CON ICONOS -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="15,0,15,10">
+            <Button Command="{Binding GuardarCommand}" Background="#4CAF50" Foreground="White" Width="105" Margin="0,0,10,0" Padding="4">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Imagenes/guardar.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Guardar" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Command="{Binding ActualizarCommand}" Background="#FF9800" Foreground="White" Width="105" Margin="0,0,10,0" Padding="4">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Imagenes/actualizar.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Actualizar" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Command="{Binding EliminarCommand}" Background="#F44336" Foreground="White" Width="105" Margin="0,0,10,0" Padding="4">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Imagenes/borrar.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Eliminar" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Command="{Binding LimpiarCommand}" Background="#E0E0E0" Width="105" Padding="4">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Imagenes/limpiar.png" Width="16" Height="16" Margin="0,0,5,0"/>
+                    <TextBlock Text="Limpiar" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <!-- SECCIÓN DE TABLA (DataGrid) -->
+        <DataGrid ItemsSource="{Binding ListaOrdenes}" SelectedItem="{Binding OrdenSeleccionada}" 
+                  Grid.Row="3" Margin="15,0,15,15" AutoGenerateColumns="False" 
+                  CanUserAddRows="False" IsReadOnly="True" SelectionMode="Single"
+                  AlternatingRowBackground="#F1F8E9" HeadersVisibility="Column">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding OrderID}" Width="60"/>
+                <DataGridTextColumn Header="Cliente" Binding="{Binding Cliente}" Width="*"/>
+                <DataGridTextColumn Header="Empleado" Binding="{Binding Empleado}" Width="*"/>
+                <DataGridTextColumn Header="Transportista" Binding="{Binding Transportista}" Width="140"/>
+                <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha, StringFormat=dd/MM/yyyy}" Width="100"/>
+                <DataGridTextColumn Header="Ciudad de Destino" Binding="{Binding CiudadDestino}" Width="130"/>
+                <DataGridTextColumn Header="Monto de Envío (Freight)" Binding="{Binding Monto, StringFormat=C}" Width="110"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
